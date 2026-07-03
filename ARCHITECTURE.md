@@ -54,7 +54,7 @@ This architecture document describes a production-inspired AWS monitoring and ob
 
 The current architecture diagram shows a single-host deployment where Grafana, Prometheus, and Node Exporter all run on the same EC2 instance. The user browser connects to Grafana on port `3000`, Grafana queries Prometheus on port `9090`, and Prometheus scrapes Node Exporter on port `9100`.
 
-## ASCII Workflow Diagram
+##  Workflow Diagram
 
 ```text
 [User Browser] --HTTPS--> [Grafana 3000]
