@@ -32,26 +32,63 @@ The goal is to build a production-like observability architecture that can be sh
 | Node Exporter | 9100 | System-level metrics exporter |
 | SSH           | 22   | Remote access |
 
-## Project Structure
+## Architecture Overview
+
+This repository deploys a self-contained observability stack on a single AWS EC2 instance. The stack includes:
+
+- `Node Exporter` for Linux host metrics
+- `Prometheus` for scraping and storing time-series metrics
+- `Grafana Enterprise` for dashboard visualization
+- `systemd` for service lifecycle management
+
+The components communicate locally on the EC2 host, with Grafana serving dashboards on port `3000`, Prometheus on port `9090`, and Node Exporter on port `9100`.
 
 ```text
-AWS Monitoring & Alerting Architecture/
-├── ARCHITECTURE.md
-├── COMMANDS.md
-├── INSTALLATION.md
-├── README.md
-├── TROUBLESHOOTING.md
-├── dashboard-codes.md
-├── Linux-Commands-Bash-Scripts/
-├── EC2-images/
-├── Grafana-images/
-└── Prometheus-images/
+                       +-------------------+
+                       |   User Browser    |
+                       | (remote client)   |
+                       +---------+---------+
+                                 |
+                                 | HTTPS / HTTP
+                                 |
+                       +---------v---------+
+                       | AWS EC2 Instance   |
+                       | (Amazon Linux 2023)|
+                       +---------+---------+
+                                 |
+               +-----------------+-----------------+
+               |                                   |
+        +------v------+                    +-------v-------+
+        |   Grafana    |                    |  Prometheus   |
+        | port 3000    |<-------------------| port 9090     |
+        | Dashboards   |  queries metrics   | Scrapes       |
+        +------+------+                    +-------+-------+
+               |                                   |
+               |                                   |
+               |                                   |
+      +--------v--------+                  +--------v--------+
+      |  User browser /  |                  |  Node Exporter  |
+      |  external access  |                  |  port 9100      |
+      +------------------+                  |  Host metrics   |
+                                             +----------------+
 ```
 
-- `ARCHITECTURE.md` explains the monitoring stack design, data flow, and validation details.
-- `INSTALLATION.md` contains the exact setup steps for Node Exporter, Prometheus, and Grafana.
-- `README.md` is the main project landing page, documentation summary, and showcase.
-- `EC2-images/`, `Grafana-images/`, and `Prometheus-images/` store proof screenshots from deployment.
+[View the full architecture details in ARCHITECTURE.md](ARCHITECTURE.md)
+
+## Project Structure
+
+- [ARCHITECTURE.md](ARCHITECTURE.md) — architecture design, diagram, and data flow
+- [COMMANDS.md](COMMANDS.md) — command reference and operational commands
+- [INSTALLATION.md](INSTALLATION.md) — setup and configuration instructions
+- [README.md](README.md) — project overview and main landing page
+- [TROUBLESHOOTING.md](TROUBLESHOOTING.md) — troubleshooting, recovery, and validation
+- [dashboard-codes.md](dashboard-codes.md) — dashboard query snippets and Grafana code
+- [Linux-Commands-Bash-Scripts/](Linux-Commands-Bash-Scripts/) — shell scripts, commands, and install steps
+- [EC2-images/](EC2-images/) — EC2 deployment proof screenshots
+- [Grafana-images/](Grafana-images/) — Grafana dashboard evidence screenshots
+- [Prometheus-images/](Prometheus-images/) — Prometheus validation screenshots
+
+Each linked file or folder corresponds to the current project structure and is clickable on GitHub.
 
 ## Project Goals
 
@@ -167,9 +204,3 @@ This project includes the following documentation files:
 
 The `EC2-images/`, `Grafana-images/`, `Prometheus-images/`, and `Linux-Commands-Bash-Scripts/` folders contain screenshots from the completed setup. These images can be used as proof for GitHub and project presentations.
 
-## Next Steps
-
-- Add Grafana dashboards and alerting rules
-- Convert setup into Terraform or Ansible automation
-- Add TLS, authentication, and production security hardening
-- Integrate Alertmanager for notification workflows
