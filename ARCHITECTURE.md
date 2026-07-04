@@ -136,7 +136,7 @@ This architecture demonstrates a clean separation of concerns:
 ## Validation and Scope
 
 - This is a single-host architecture: all components run on the same EC2 instance.
-- Prometheus scrapes metrics from localhost targets (`localhost:9100` for Node Exporter and `localhost:9090` for itself).
+- Prometheus scrapes metrics from localhost targets (`localhost:9100` for Node Exporter and `localhost:9090` for itself)
 - Grafana queries Prometheus locally and serves dashboards on port `3000`.
 - There is no separate remote exporter or distributed cluster in this setup.
 
