@@ -207,5 +207,5 @@ The `EC2-images/`, `Grafana-images/`, `Prometheus-images/`, and `Linux-Commands-
 # Author
 
 Mahesh Suryawanshi
-Email - maheshsury1shi@gmail.com
 
+maheshsury1shi@gmail.com
