@@ -1,5 +1,7 @@
 # AWS Monitoring & Alerting Architecture
 
+[![AWS EC2](https://img.shields.io/badge/AWS-EC2-232F3E?logo=amazonaws&logoColor=white)](https://aws.amazon.com/ec2/) [![Amazon Linux](https://img.shields.io/badge/Amazon%20Linux-2023-FF9900?logo=amazonaws&logoColor=white)](https://aws.amazon.com/linux/) [![Prometheus](https://img.shields.io/badge/Prometheus-3.5.3-E6522C?logo=prometheus&logoColor=white)](https://prometheus.io/) [![Grafana Enterprise](https://img.shields.io/badge/Grafana%20Enterprise-12.1.1-F46800?logo=grafana&logoColor=white)](https://grafana.com/) [![Node Exporter](https://img.shields.io/badge/Node%20Exporter-1.10.2-4E9A06?logo=linux&logoColor=white)](https://github.com/prometheus/node_exporter) [![systemd](https://img.shields.io/badge/systemd-Enabled-2F4F4F?logo=linux&logoColor=white)](https://www.freedesktop.org/wiki/Software/systemd/) [![Bash](https://img.shields.io/badge/Bash-Scripts-4EAA25?logo=gnu-bash&logoColor=white)](https://www.gnu.org/software/bash/) [![SSH](https://img.shields.io/badge/SSH-Access-000000?logo=ssh&logoColor=white)](https://www.openssh.com/)
+
 ## Overview
 
 This project demonstrates a complete AWS monitoring stack deployed on a single EC2 instance running Amazon Linux 2023. It includes:
