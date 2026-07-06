@@ -206,3 +206,8 @@ This project includes the following documentation files:
 
 The `EC2-images/`, `Grafana-images/`, `Prometheus-images/`, and `Linux-Commands-Bash-Scripts/` folders contain screenshots from the completed setup. These images can be used as proof for GitHub and project presentations.
 
+# Author
+
+Mahesh Suryawanshi
+
+maheshsury1shi@gmail.com
