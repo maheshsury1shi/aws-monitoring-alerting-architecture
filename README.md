@@ -53,26 +53,26 @@ The components communicate locally on the EC2 host, with Grafana serving dashboa
                                  |
                                  | HTTPS / HTTP
                                  |
-                       +---------v---------+
+                       +---------v----------+
                        | AWS EC2 Instance   |
                        | (Amazon Linux 2023)|
-                       +---------+---------+
+                       +---------+----------+
                                  |
                +-----------------+-----------------+
                |                                   |
         +------v------+                    +-------v-------+
-        |   Grafana    |                    |  Prometheus   |
-        | port 3000    |<-------------------| port 9090     |
-        | Dashboards   |  queries metrics   | Scrapes       |
+        |   Grafana   |                    |  Prometheus   |
+        | port 3000   |<-------------------| port 9090     |
+        | Dashboards  |  queries metrics   | Scrapes       |
         +------+------+                    +-------+-------+
                |                                   |
                |                                   |
                |                                   |
-      +--------v--------+                  +--------v--------+
-      |  User browser /  |                  |  Node Exporter  |
-      |  external access  |                  |  port 9100      |
-      +------------------+                  |  Host metrics   |
-                                             +----------------+
+      +--------v---------+                 +--------v--------+
+      |  User browser /  |                 |  Node Exporter  |
+      |  external access |                 |  port 9100      |
+      +------------------+                 |  Host metrics   |
+                                           +-----------------+
 ```
 
 [View the full architecture details in ARCHITECTURE.md](ARCHITECTURE.md)
