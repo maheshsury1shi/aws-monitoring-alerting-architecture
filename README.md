@@ -12,7 +12,7 @@ This project demonstrates a complete AWS monitoring stack deployed on a single E
 - Systemd service management for reliability
 - AWS Security Group configuration for secure network access
 
-The goal is to build a production-like observability architecture that can be showcased on GitHub with accompanying proof images.
+
 
 ## Tech Stack
 
